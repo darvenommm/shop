@@ -1,0 +1,30 @@
+.button {
+  color: var(--text-color);
+
+  border-radius: 15%;
+  background-color: inherit;
+  opacity: 0.6;
+  transition: opacity 200ms;
+
+  border: none;
+  padding: 10px 15px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.active-button {
+  text-decoration: underline;
+
+  opacity: 1;
+}

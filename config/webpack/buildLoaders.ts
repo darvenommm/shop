@@ -1,14 +1,16 @@
+import { join } from 'node:path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import { createSwcConfig } from './swc/createSwcConfig';
 
 import type { ModuleOptions } from 'webpack';
 
-import type { BuildOptions } from './types/types';
+import type { IBuildOptions } from './types/types';
 
 export const buildLoaders = ({
   isDevelopment,
-}: BuildOptions): ModuleOptions['rules'] => {
+  paths,
+}: IBuildOptions): ModuleOptions['rules'] => {
   const tsLoader = {
     test: /\.[jt]sx?$/i,
     exclude: /(node_modules)/,
@@ -39,6 +41,9 @@ export const buildLoaders = ({
         loader: 'sass-loader',
         options: {
           sourceMap: isDevelopment,
+          sassOptions: {
+            includePaths: [join(paths.src, 'shared', 'styles')],
+          },
         },
       },
     ],
@@ -69,23 +74,7 @@ export const buildLoaders = ({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       resourceQuery: { not: [/url/] },
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            svgoConfig: {
-              plugins: [
-                {
-                  name: 'convertColors',
-                  params: {
-                    currentColor: true,
-                  },
-                },
-              ],
-            },
-          },
-        },
-      ],
+      use: '@svgr/webpack',
     },
   ];
 

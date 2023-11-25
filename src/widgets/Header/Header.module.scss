@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--extra-background-color);
+
+  padding: 20px 0;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

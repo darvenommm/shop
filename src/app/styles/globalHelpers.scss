@@ -1,0 +1,18 @@
+@use 'variables' as vars;
+@use 'helpers';
+
+:global {
+  .container {
+    max-width: vars.$desktop-width;
+    padding: 0 vars.$desktop-padding;
+    margin: 0 auto;
+
+    @include helpers.tablet {
+      padding: 0 vars.$tablet-padding;
+    }
+
+    @include helpers.mobile {
+      padding: 0 vars.$mobile-padding;
+    }
+  }
+}

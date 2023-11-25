@@ -1,21 +1,22 @@
 import { Suspense } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { clsx } from 'clsx';
 
-import imageSrc from '@/shared/assets/images/graph-picture.jpg';
-import classes from './Template.module.scss';
+import { Header } from '@/widgets/Header';
+
+import classes from './TemplatePage.module.scss';
 
 export const TemplatePage = (): JSX.Element => {
+  const pageContainer = clsx('container', classes['page-container']);
+
   return (
-    <>
-      <header className={classes.header}>Header</header>
-      <nav>
-        <Link to="/">main</Link>|<Link to="/cart">cart</Link>
-      </nav>
-      <img src={imageSrc} alt="picture." width={200} />
-      <Suspense fallback={<p>loading...</p>}>
-        <Outlet />
-      </Suspense>
-      <footer>Footer</footer>
-    </>
+    <div className={classes['page']}>
+      <Header />
+      <main className={pageContainer}>
+        <Suspense fallback={<p>loading...</p>}>
+          <Outlet />
+        </Suspense>
+      </main>
+    </div>
   );
 };

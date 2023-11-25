@@ -4,24 +4,24 @@ import { buildConfig } from './config/webpack';
 
 import type { Configuration } from 'webpack';
 
-import type { BuildOptions, BuildMode, BuildPaths } from './config/webpack';
+import type { IBuildOptions, BuildMode, IBuildPaths } from './config/webpack';
 
-interface EnvironmentVariables {
+interface IEnvironmentVariables {
   mode?: BuildMode;
   port?: number;
 }
 
-export default (env: EnvironmentVariables): Configuration => {
+export default (env: IEnvironmentVariables): Configuration => {
   env.mode = env.mode ? env.mode : 'development';
 
-  const paths: BuildPaths = {
+  const paths: IBuildPaths = {
     entry: join(__dirname, 'src', 'index.tsx'),
     output: join(__dirname, 'build'),
     public: join(__dirname, 'public'),
     src: join(__dirname, 'src'),
   };
 
-  const options: BuildOptions = {
+  const options: IBuildOptions = {
     mode: env.mode,
     isDevelopment: env.mode === 'development',
     isProduction: env.mode === 'production',

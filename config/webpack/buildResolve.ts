@@ -1,10 +1,10 @@
 import type { Configuration } from 'webpack';
 
-import type { BuildOptions } from './types/types';
+import type { IBuildOptions } from './types/types';
 
 export const buildResolve = ({
   paths,
-}: BuildOptions): Configuration['resolve'] => {
+}: IBuildOptions): Configuration['resolve'] => {
   return {
     alias: {
       '@': paths.src,

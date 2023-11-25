@@ -5,9 +5,9 @@ import { buildDevServer } from './buildDevServer';
 
 import type { Configuration } from 'webpack';
 
-import type { BuildOptions } from './types/types';
+import type { IBuildOptions } from './types/types';
 
-export const buildConfig = (options: BuildOptions): Configuration => {
+export const buildConfig = (options: IBuildOptions): Configuration => {
   const { mode, paths, isDevelopment } = options;
 
   return {

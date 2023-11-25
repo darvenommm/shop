@@ -1,0 +1,14 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+
+  background-color: var(--background-color);
+
+  min-height: 100vh;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+}

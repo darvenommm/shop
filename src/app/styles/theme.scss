@@ -1,0 +1,16 @@
+@use 'variables' as vars;
+
+:global {
+  body[data-theme="dark"] {
+    --text-color: #{vars.$light-text-color};
+    --background-color: #{vars.$dark-background-color};
+    --extra-background-color: #{vars.$dark-extra-background-color};
+  }
+
+  body[data-theme="light"] {
+    --text-color: #{vars.$dark-text-color};
+    --background-color: #{vars.$light-background-color};
+    --extra-background-color: #{vars.$light-extra-background-color};
+  }
+}
+
